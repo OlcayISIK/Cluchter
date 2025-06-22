@@ -113,6 +113,21 @@ div.stButton > button[kind="primary"] {
 }
 
 .big-title-second .optimal {
+  color: #a3cde7;
+  font-weight: 500;
+}
+
+.big-title-second .critical {
+  color: #601e32;
+  font-weight: 500;
+}
+
+.big-title-second .tension {
+  color: #e6eea9;
+  font-weight: 500;
+}
+
+.big-title-second .recovery {
   color: #b4eea9;
   font-weight: 500;
 }

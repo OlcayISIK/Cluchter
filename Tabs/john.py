@@ -13,7 +13,7 @@ def app(df, x, y):
         st.image("images/hong-joshua.png", use_container_width=True, width=200)
     with col2:
         st.markdown("<div class='big-title'>Hong Joshua (Brimstone)</div>", unsafe_allow_html=True)
-        st.markdown("<div class='big-title-second'>Current Status: <span class='optimal'>Optimal</span></div>", unsafe_allow_html=True)
+        st.markdown("<div class='big-title-second'>Current Status: <span class='tension'>Tension</span></div>", unsafe_allow_html=True)
 
     st.markdown("<div class='sub-title'>Overall Game Stress Predictions</div>", unsafe_allow_html=True)
 

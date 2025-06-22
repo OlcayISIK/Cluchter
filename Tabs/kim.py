@@ -10,18 +10,18 @@ def app(df, x, y):
 
     col1, col2 = st.columns([1, 5])
     with col1:
-        st.image("images/olcay.jpeg", use_container_width=True, width=200)
+        st.image("images/kimjiwon.jpeg", use_container_width=True, width=200)
     with col2:
-        st.markdown("<div class='big-title'>Olcay Işık (Omen)</div>", unsafe_allow_html=True)
-        st.markdown("<div class='big-title-second'>Current Status: <span class='recovery'>Recovery</span></div>", unsafe_allow_html=True)
+        st.markdown("<div class='big-title'>Kim Ji-Won (Raze)</div>", unsafe_allow_html=True)
+        st.markdown("<div class='big-title-second'>Current Status: <span class='optimal'>Optimal</span></div>", unsafe_allow_html=True)
 
     st.markdown("<div class='sub-title'>Overall Game Stress Predictions</div>", unsafe_allow_html=True)
 
     presets = {
-        "1": [50, 20, 96.5, 10.5, 90.1, 70.1, 8.0, 70],
-        "2": [48, 25, 96.8, 14.5, 96.2, 90.1, 7.5, 65],
-        "3": [70, 23, 96.5, 13.5, 94.2, 83.1, 6.5, 72],
-        "4": [58, 22, 98.4, 12.0, 94.8, 78.4, 5.5, 68]
+        "1": [89, 24, 97.6, 16.0, 92.2, 90.5, 6.5, 70],
+        "2": [92, 23, 97.2, 15.5, 91.2, 89.1, 7.5, 68],
+        "3": [56, 22, 98.4, 12.0, 94.8, 78.4, 6.5, 68],
+        "4": [58, 25, 97.4, 14.0, 93.8, 76.4, 6.5, 68]
         # "5" removed — handled dynamically below
     }
 
@@ -68,17 +68,17 @@ def app(df, x, y):
             float(df["hr"].min())
         ]
 
-    gsr = slider_val("GSR Data", "olcay_gsr", int(df["gsr"].min()), int(df["gsr"].max()), int(preset_vals[0]))
-    rr = slider_val("Respiration Rate", "olcay_rr", int(df["rr"].min()), int(df["rr"].max()), int(preset_vals[1]))
+    gsr = slider_val("GSR Data", "kimjiwon_gsr", int(df["gsr"].min()), int(df["gsr"].max()), int(preset_vals[0]))
+    rr = slider_val("Respiration Rate", "kimjiwon_rr", int(df["rr"].min()), int(df["rr"].max()), int(preset_vals[1]))
     bt_celsius = slider_val(
-        "Body Temperature (in °C)", "olcay_bt", bt_min_c, bt_max_c,
+        "Body Temperature (in °C)", "kimjiwon_bt", bt_min_c, bt_max_c,
         round((preset_vals[2] - 32) * 5 / 9, 1)
     )
-    lm = slider_val("Limb Movement", "olcay_lm", float(df["lm"].min()), float(df["lm"].max()), float(preset_vals[3]))
-    bo = slider_val("Blood Oxygen(%)", "olcay_bo", float(df["bo"].min()), float(df["bo"].max()), float(preset_vals[4]))
-    rem = slider_val("Mouse Squeeze Muscle Tone", "olcay_rem", float(df["rem"].min()), float(df["rem"].max()), float(preset_vals[5]))
-    sh = slider_val("Sleeping Hour", "olcay_sh", float(df["sh"].min()), float(df["sh"].max()), float(preset_vals[6]))
-    hr = slider_val("Heart Rate", "olcay_hr", float(df["hr"].min()), float(df["hr"].max()), float(preset_vals[7]))
+    lm = slider_val("Limb Movement", "kimjiwon_lm", float(df["lm"].min()), float(df["lm"].max()), float(preset_vals[3]))
+    bo = slider_val("Blood Oxygen(%)", "kimjiwon_bo", float(df["bo"].min()), float(df["bo"].max()), float(preset_vals[4]))
+    rem = slider_val("Mouse Squeeze Muscle Tone", "kimjiwon_rem", float(df["rem"].min()), float(df["rem"].max()), float(preset_vals[5]))
+    sh = slider_val("Sleeping Hour", "kimjiwon_sh", float(df["sh"].min()), float(df["sh"].max()), float(preset_vals[6]))
+    hr = slider_val("Heart Rate", "kimjiwon_hr", float(df["hr"].min()), float(df["hr"].max()), float(preset_vals[7]))
 
     if st.session_state.active_button == "5":
         if st.button("Stres Seviyesini Tahmin Et"):
@@ -93,22 +93,22 @@ def detect_and_display(x, y, features):
     st.info("Stres Seviyesi Hesaplandı. Raporlar Gönderiliyor.")
 
     if detection == 1:
-        st.success("Olcay Işık has low stress level")
+        st.success("Kim Ji-Won has low stress level 🙂")
         st.markdown("### Suggestions:")
-        st.markdown("- Stay focused and centered. **Take a few deep breaths** to reinforce calm and readiness.")
+        st.markdown("- Great start! **Relax your shoulders**, breathe through your nose, and stay focused.")
     elif detection == 2:
-        st.warning("Olcay Işık has medium stress level")
+        st.warning("Kim Ji-Won has medium stress level 😐")
         st.markdown("### Suggestions:")
-        st.markdown("- Remain calm. Use short mental resets and **perform a quick breathing drill** to stay composed.")
+        st.markdown("- Stay composed. **Do a light neck stretch**, take three deep breaths, and reset your rhythm.")
     elif detection == 3:
-        st.error("Olcay Işık has high stress level!")
+        st.error("Kim Ji-Won has high stress level! 😞")
         st.markdown("### Suggestions:")
-        st.markdown("- Pause briefly and reset with 4-7-8 breathing. **Take deep, slow breaths**, loosen your grip, and refocus.")
+        st.markdown("- Step back for a moment. Use the 4-7-8 breathing technique, **drink lukewarm water**, and gently stretch your fingers.")
     elif detection == 4:
-        st.error("Olcay Işık has very high stress level!!")
+        st.error("Kim Ji-Won has very high stress level!! 😫")
         st.markdown("### Suggestions:")
-        st.markdown("- Take a full break from the game. Practice box breathing, **stretch your arms**, and visualize the next round calmly.")
+        st.markdown("- Pause everything. **Rest your eyes for 20 seconds**, do box breathing, and take a deep breath before re-engaging.")
     else:
-        st.success("Olcay Işık is stress free and calm")
+        st.success("Kim Ji-Won is stress free and calm 😄")
         st.markdown("### Suggestions:")
-        st.markdown("- Keep the rhythm. Stay aware, **breathe steadily**, and maintain focus.")
+        st.markdown("- Keep your tempo steady. **Stay hydrated**, breathe easy, and enjoy your performance.")

@@ -2,7 +2,7 @@ import streamlit as st
 from datetime import datetime
 import base64
 from web_functions import load_data
-from Tabs import home, maide, olcay, john
+from Tabs import home, maide, olcay, john, kim
 
 # Load external CSS
 with open("static/style.css") as f:
@@ -17,6 +17,7 @@ Tabs = {
     "Maide": {"img": "images/maide.jpeg", "page": maide, "color": "🔴"},
     "Olcay": {"img": "images/olcay.jpeg", "page": olcay, "color": "🟢"},
     "Joshua": {"img": "images/hong-joshua.png", "page": john, "color": "🟡"},
+    "Ji-won": {"img": "images/kimjiwon.jpeg", "page": kim, "color": "🔵"}
 }
 
 for tab in Tabs.values():
