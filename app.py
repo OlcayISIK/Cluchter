@@ -1,8 +1,9 @@
 import streamlit as st
+st.set_page_config(layout="wide")  # <--- Add this as the very first Streamlit call
 from datetime import datetime
 import base64
 from web_functions import load_data
-from Tabs import home, maide, olcay, john, kim
+from Tabs import home, maide, olcay, hongjoshua, kim
 
 # Load external CSS
 with open("static/style.css") as f:
@@ -16,7 +17,7 @@ Tabs = {
     "Home": {"img": None, "page": home, "color": ""},
     "Maide": {"img": "images/maide.jpeg", "page": maide, "color": "🔴"},
     "Olcay": {"img": "images/olcay.jpeg", "page": olcay, "color": "🟢"},
-    "Joshua": {"img": "images/hong-joshua.png", "page": john, "color": "🟡"},
+    "Joshua": {"img": "images/hong-joshua.png", "page": hongjoshua, "color": "🟡"},
     "Ji-won": {"img": "images/kimjiwon.jpeg", "page": kim, "color": "🔵"}
 }
 
@@ -30,18 +31,46 @@ if "selected_page" not in st.session_state:
     st.session_state.selected_page = "Home"
 
 with st.sidebar:
-    # Centered Home button with icon
-    home_col1, home_col2, home_col3 = st.columns([1, 2, 1])
+    # Current time and date
+    now = datetime.now()
+    time_str = now.strftime("%H:%M")
+    date_str = now.strftime("%a,%d").upper()
+
+    st.markdown(f"""
+    <div class="sidebar-top-time-date">
+        <div class="time-left">{time_str}</div>
+        <div class="date-right">{date_str}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Stylized CLUCHTER button as a heading
+    st.markdown("""
+    <style>
+    .cluchter-button > button {
+        font-size: 2.2rem !important;
+        font-weight: bold !important;
+        color: white !important;
+        background: transparent !important;
+        border: none !important;
+        text-align: center !important;
+        padding: 0.5rem 1rem !important;
+        width: 100%;
+    }
+    .cluchter-button > button:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        cursor: pointer !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    home_col1, home_col2, home_col3 = st.columns([1, 4, 1])
     with home_col2:
-        if st.button("Home", key="home_button"):
+        st.markdown('<div class="cluchter-button">', unsafe_allow_html=True)
+        if st.button("CLUCHTER", key="home_button"):
             st.session_state.selected_page = "Home"
+        st.markdown('</div>', unsafe_allow_html=True)
 
-    # Date display
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    st.markdown(f"<div class='sidebar-date'>{now}</div>", unsafe_allow_html=True)
-
-    # Title and Valorant logo
-    st.markdown("<div class='sidebar-title'>Valorant</div>", unsafe_allow_html=True)
+    # Logo
     try:
         with open("images/valorant_logo.png", "rb") as img_file:
             logo_base64 = base64.b64encode(img_file.read()).decode()
@@ -49,36 +78,32 @@ with st.sidebar:
     except:
         st.warning("Valorant logo not found.")
 
-    st.markdown("<div class='sidebar-section-header'>👤 Select Gamer</div>", unsafe_allow_html=True)
+    # Player selector
+    st.markdown("<div class='sidebar-section-header'>👤 Select Player</div>", unsafe_allow_html=True)
 
-    # Sidebar tabs with images and colored emoji buttons
     for name, data in Tabs.items():
         if name == "Home":
-            continue  # Home already at top
-
+            continue
         cols = st.columns([1, 4])
-        # Show circular image
         if data["img_base64"]:
             cols[0].image(f"data:image/jpeg;base64,{data['img_base64']}", width=40)
         else:
             cols[0].write("")
-
-        # Button with colored emoji label
-        clicked = cols[1].button(f"{data['color']} {name}", key=name)
+        clicked = cols[1].button(f"{name} {data['color']}", key=name)
         if clicked:
             st.session_state.selected_page = name
 
 # Load data
 df, x, y = load_data()
 
-# Show selected page
+# Render selected page
 page = st.session_state.selected_page
 if page == "Home":
     Tabs[page]["page"].app()
 else:
     Tabs[page]["page"].app(df, x, y)
 
-# Sidebar system status
+# System status
 st.sidebar.markdown("<hr style='margin-top: 20px; margin-bottom: 10px;'>", unsafe_allow_html=True)
 st.sidebar.markdown("<div class='sidebar-section-header'>System Status</div>", unsafe_allow_html=True)
 
@@ -89,7 +114,7 @@ status_fields = [
     ("Body Tempature", "green"),
     ("Limb Movement", "green"),
     ("Blood Oxygen", "green"),
-    ("Mouse Squeeze Muscle Tone", "green"),
+    ("Hand Tremors", "green"),
     ("Sleeping Hour", "green"),
     ("Heart Rate", "green"),
 ]
@@ -98,6 +123,6 @@ for label, color in status_fields:
     st.sidebar.markdown(f"""
         <div class='system-status'>
             <div class='status-dot' style='background-color: {color};'></div>
-            <span class='status-label'>{label} Active</span>
+            <span class='status-label'>{label}</span>
         </div>
     """, unsafe_allow_html=True)

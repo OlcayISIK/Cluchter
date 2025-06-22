@@ -61,11 +61,11 @@ def app(df, x, y):
 
     col1, col2 = st.columns([1, 5])
     with col1:
-        st.image("images/olcay.jpeg", use_container_width=True, width=200)
+        st.image("images/hong-joshua.png", use_container_width=True, width=200)
     with col2:
-        st.markdown("<div class='big-title'>Olcay ISIK / Controller 🟢</div>", unsafe_allow_html=True)
-        st.markdown("<div class='big-title-second'>Current Character: <span class='optimal'>Omen</span></div>", unsafe_allow_html=True)
-        st.markdown("<div class='big-title-second'>Current Status: <span class='recovery'>Recovery</span></div>", unsafe_allow_html=True)
+        st.markdown("<div class='big-title'>Hong Joshua / Entry 🟡</div>", unsafe_allow_html=True)
+        st.markdown("<div class='big-title-second'>Current Character: <span class='optimal'>Raze</span></div>", unsafe_allow_html=True)       
+        st.markdown("<div class='big-title-second'>Current Status: <span class='tension'>Tension</span></div>", unsafe_allow_html=True)
         st.markdown("<div class='big-title-second'>Currently Playing: <span class='critical'>Competitive</span></div>", unsafe_allow_html=True)
         st.markdown("<div class='big-title-second'>Current Game Status: <span class='optimal'>Pratice Mode</span></div>", unsafe_allow_html=True)
 
@@ -156,17 +156,17 @@ def app(df, x, y):
     with slider_col:
         st.markdown("<h3 class='AI-label'>Biometric Data</h3>", unsafe_allow_html=True)
 
-        gsr = slider_val("GSR Data", "olcay_gsr", int(df["gsr"].min()), int(df["gsr"].max()), int(preset_vals[0]))
-        rr = slider_val("Respiration Rate", "olcay_rr", int(df["rr"].min()), int(df["rr"].max()), int(preset_vals[1]))
+        gsr = slider_val("GSR Data", "hongjoshua_gsr", int(df["gsr"].min()), int(df["gsr"].max()), int(preset_vals[0]))
+        rr = slider_val("Respiration Rate", "hongjoshua_rr", int(df["rr"].min()), int(df["rr"].max()), int(preset_vals[1]))
         bt_celsius = slider_val(
-            "Body Temperature (in °C)", "olcay_bt", bt_min_c, bt_max_c,
+            "Body Temperature (in °C)", "hongjoshua_bt", bt_min_c, bt_max_c,
             round((preset_vals[2] - 32) * 5 / 9, 1)
         )
-        lm = slider_val("Limb Movement", "olcay_lm", float(df["lm"].min()), float(df["lm"].max()), float(preset_vals[3]))
-        bo = slider_val("Blood Oxygen(%)", "olcay_bo", float(df["bo"].min()), float(df["bo"].max()), float(preset_vals[4]))
-        rem = slider_val("Hand Tremors", "olcay_rem", float(df["rem"].min()), float(df["rem"].max()), float(preset_vals[5]))
-        sh = slider_val("Sleeping Hour", "olcay_sh", float(df["sh"].min()), float(df["sh"].max()), float(preset_vals[6]))
-        hr = slider_val("Heart Rate", "olcay_hr", float(df["hr"].min()), float(df["hr"].max()), float(preset_vals[7]))
+        lm = slider_val("Limb Movement", "hongjoshua_lm", float(df["lm"].min()), float(df["lm"].max()), float(preset_vals[3]))
+        bo = slider_val("Blood Oxygen(%)", "hongjoshua_bo", float(df["bo"].min()), float(df["bo"].max()), float(preset_vals[4]))
+        rem = slider_val("Hand Tremors", "hongjoshua_rem", float(df["rem"].min()), float(df["rem"].max()), float(preset_vals[5]))
+        sh = slider_val("Sleeping Hour", "hongjoshua_sh", float(df["sh"].min()), float(df["sh"].max()), float(preset_vals[6]))
+        hr = slider_val("Heart Rate", "hongjoshua_hr", float(df["hr"].min()), float(df["hr"].max()), float(preset_vals[7]))
 
     if has_suggestion and separator_col is not None:
         with separator_col:
@@ -198,16 +198,16 @@ def detect_and_display(x, y, features):
 def show_suggestion(detection):
     if detection == 1:
         st.success("Low Stress Level")
-        st.markdown("<div class='suggestion-box'>- Maintain your current focused state.<br>- Practice controlled breathing.<br>- <b>Keep yourself hydrated</b>.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='suggestion-box'>- Stay sharp and composed.<br>- Breathe steadily.<br>- <b>Drink water regularly</b>.</div>", unsafe_allow_html=True)
     elif detection == 2:
         st.warning("Medium Stress Level")
-        st.markdown("<div class='suggestion-box'>- Give yourself brief mental breaks.<br>- Keep your composure.<br>- <b>Refresh yourself with cool water</b>.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='suggestion-box'>- Take mental resets.<br>- Stay calm.<br>- <b>Splash cool water</b> on your face.</div>", unsafe_allow_html=True)
     elif detection == 3:
         st.error("High Stress Level!")
-        st.markdown("<div class='suggestion-box'>- Practice 4-7-8 breathing technique.<br>- <b>Hydrate with chilled water</b>.<br>- Adjust your posture and do light stretches.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='suggestion-box'>- Use 4-7-8 breathing.<br>- <b>Drink cold water</b>.<br>- Stretch and fix posture.</div>", unsafe_allow_html=True)
     elif detection == 4:
         st.error("Very High Stress Level!!")
-        st.markdown("<div class='suggestion-box'>- Step away temporarily.<br>- Implement box breathing method.<br>- <b>Replenish electrolytes with a sports drink</b>.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='suggestion-box'>- Take a timeout.<br>- Try box breathing.<br>- <b>Drink an isotonic beverage</b>.</div>", unsafe_allow_html=True)
     else:
         st.success("Stress Free and Calm")
-        st.markdown("<div class='suggestion-box'>- Keep up your current pace.<br>- <b>Take regular water breaks</b>.<br>- Maintain your concentration and energy.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='suggestion-box'>- Maintain rhythm.<br>- <b>Sip water</b>.<br>- Stay focused and refreshed.</div>", unsafe_allow_html=True)

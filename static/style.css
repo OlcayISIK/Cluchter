@@ -1,10 +1,30 @@
+/* General styles */
+:root {
+  --valorant-red: #ff4655;
+  --valorant-dark: #0e0e10;
+  --valorant-dark-secondary: #1e1e22;
+  --valorant-light: #f8f8f8;
+  --valorant-gray: #a0a0a0;
+  --optimal: #1b9af9;
+  --tension: #f9a01b;
+  --critical: #ff4655;
+  --recovery: #0fce5b;
+}
+
 html,
 body,
 [class*="css"] {
   font-family: "Rajdhani", sans-serif !important;
 }
 
-/* Typography Defaults */
+body {
+  font-family: "Rajdhani", sans-serif !important;
+  background-color: var(--valorant-dark);
+  color: var(--valorant-light);
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2,
 h3,
@@ -33,6 +53,316 @@ button {
   font-family: "Rajdhani", sans-serif;
 }
 
+.cluchter-title {
+  font-size: 70px !important;
+  font-weight: 900;
+  text-align: center;
+  font-family: "Rajdhani", sans-serif;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.center-box {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+}
+
+.center-box img {
+  width: 1500px; /* bigger size */
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.center-box p {
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+/* Existing styles plus these new ones */
+
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.feature-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-box h3 {
+  color: #4fc3f7;
+  margin-top: 0;
+}
+
+.testimonials {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  border-left: 4px solid #4fc3f7;
+}
+
+.testimonials h2 {
+  text-align: center;
+  font-size: 2rem !important;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.author {
+  font-style: italic;
+  color: #aaa;
+  margin-bottom: 0;
+}
+
+.tech-highlight {
+  margin: 4rem 0;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tech-item {
+  background: rgba(76, 175, 80, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.tech-item h4 {
+  color: #4caf50;
+  margin-top: 0;
+}
+
+.tech-highlight h2 {
+  text-align: center;
+  font-size: 2rem !important;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.AI-label {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 24px !important;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.sidebar-top-time-date {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  user-select: none;
+}
+
+.time-left {
+  text-align: left;
+}
+
+.date-right {
+  text-align: right;
+}
+
+/* Header styles */
+.big-title {
+  font-size: 3rem !important;
+  font-weight: bold;
+  color: var(--valorant-light);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.big-title-second {
+  font-size: 1.2rem;
+  color: var(--valorant-gray);
+  margin-bottom: 1.5rem;
+}
+
+.sub-title {
+  font-size: 1.4rem !important;
+  font-weight: bold;
+  color: var(--valorant-light);
+  margin: 1.5rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #2a2a2e;
+  text-transform: uppercase;
+  text-align: center; /* Centered */
+}
+
+/* Status indicators */
+.critical {
+  color: var(--critical);
+  font-weight: bold;
+}
+
+.optimal {
+  color: var(--optimal);
+  font-weight: bold;
+}
+
+.tension {
+  color: var(--tension);
+  font-weight: bold;
+}
+
+.recovery {
+  color: var(--recovery);
+  font-weight: bold;
+}
+
+/* Game status indicators */
+.game-status-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.game-status-item {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--valorant-dark-secondary);
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.custom-game-button {
+  background-color: #111827;
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid #1f2937;
+  font-weight: bold;
+  font-family: "Rajdhani", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.custom-game-button:hover {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.game-status-item.current {
+  border: 2px solid var(--valorant-red);
+}
+
+/* Player cards */
+.player-card {
+  background-color: var(--valorant-dark-secondary);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.player-card h3 {
+  margin-top: 0;
+  color: var(--valorant-light);
+}
+
+/* Vertical separator line between columns */
+.vertical-separator {
+  border-left: 2px solid #444;
+  margin-right: 2rem; /* 20px margin left and right */
+  height: 65rem !important;
+}
+
+/* Biometric data */
+.biometric-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.biometric-item {
+  background-color: var(--valorant-dark-secondary);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.biometric-title {
+  font-size: 0.9rem;
+  color: var(--valorant-gray);
+  margin-bottom: 0.5rem;
+}
+
+.biometric-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--valorant-gray);
+}
+
+/* AI suggestions */
+.ai-suggestions {
+  background-color: var(--valorant-dark-secondary);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.ai-suggestion-item {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--valorant-light);
+}
+
+/* Sidebar styles */
+[data-testid="stSidebar"] {
+  background-color: var(--valorant-dark) !important;
+  border-right: 1px solid #2a2a2e;
+}
+
+.sidebar-date {
+  color: var(--valorant-gray);
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--valorant-light);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
 /* Centered Valorant logo */
 .sidebar-logo {
   text-align: center;
@@ -41,297 +371,49 @@ button {
 }
 
 .sidebar-logo img {
-  width: 180px;
-  max-width: 90vw;
-  border-radius: 10px;
+  width: 280px;
+}
+
+.sidebar-section-header {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--valorant-light);
+  margin: 1.5rem 0 1rem 0;
+  text-transform: uppercase;
 }
 
 /* System status indicators */
 .system-status {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 0.8rem;
 }
 
 .status-dot {
-  height: 12px;
-  width: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-right: 0.8rem;
+  background-color: var(--optimal);
 }
 
 .status-label {
-  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--valorant-gray);
 }
 
-/* Sidebar titles and dates */
-.sidebar-title {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+/* Buttons */
+.stButton > button {
+  background-color: transparent;
+  color: var(--valorant-light);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  transition: all 0.3s;
 }
 
-.sidebar-date {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-/* Home Title */
-.home-title {
-  font-size: 80px;
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: 20px;
-  font-family: "Rajdhani", sans-serif;
-}
-
-/* Sidebar Home Button */
-.sidebar-home-button {
-  display: flex;
-  justify-content: center;
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-
-.sidebar-home-button button {
-  width: 80%;
-  font-weight: bold;
-  background-color: #f63366;
-  color: white;
-  border-radius: 8px;
-  padding: 6px 0;
-}
-
-/* Center the Home button text and icon */
-div.stButton > button[kind="primary"] {
-  font-size: 20px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-}
-
-/* Large Titles */
-.big-title {
-  font-size: 80px;
-  font-weight: 900;
-  font-family: "Rajdhani", sans-serif;
-  margin-bottom: 10px !important;
-}
-
-.big-title-second {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  color: white;
-}
-
-/* Color-coded status messages */
-.big-title-second .optimal {
-  color: #a3cde7;
-  font-weight: 500;
-}
-
-.big-title-second .critical {
-  color: #601e32;
-  font-weight: 500;
-}
-
-.big-title-second .tension {
-  color: #e6eea9;
-  font-weight: 500;
-}
-
-.big-title-second .recovery {
-  color: #b4eea9;
-  font-weight: 500;
-}
-
-/* Sub-title */
-.sub-title {
-  font-size: 50px;
-  font-weight: 700;
-  font-family: "Rajdhani", sans-serif;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-/* Sidebar section headers */
-.sidebar-section-header {
-  font-size: 22px;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-/* === Responsive Adjustments === */
-
-/* Tablets (≤ 1024px) */
-@media (max-width: 1024px) {
-  .sidebar-logo img {
-    width: 90px;
-  }
-
-  .sidebar-title {
-    font-size: 20px;
-  }
-
-  .sidebar-date {
-    font-size: 14px;
-  }
-
-  div.stButton > button[kind="primary"] {
-    font-size: 16px;
-  }
-
-  body,
-  div,
-  p,
-  span,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  label,
-  button {
-    font-size: 16px !important;
-  }
-}
-
-/* Mobile Devices (≤ 480px) */
-@media (max-width: 480px) {
-  .sidebar-logo img {
-    width: 100px;
-  }
-
-  .sidebar-title {
-    font-size: 18px;
-  }
-
-  .sidebar-date {
-    font-size: 12px;
-  }
-
-  div.stButton > button[kind="primary"] {
-    font-size: 14px;
-  }
-
-  body,
-  div,
-  p,
-  span,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  label,
-  button {
-    font-size: 14px !important;
-  }
-
-  .sidebar-home-button {
-    margin-left: 0;
-    padding: 0 10px;
-  }
-
-  .sidebar-home-button button {
-    width: 100%;
-  }
-}
-
-/* Very Small Devices (≤ 360px) */
-@media (max-width: 360px) {
-  .home-title,
-  .big-title {
-    font-size: 36px;
-  }
-
-  .sub-title {
-    font-size: 24px;
-  }
-
-  .sidebar-title {
-    font-size: 16px;
-  }
-
-  .sidebar-date {
-    font-size: 10px;
-  }
-
-  div.stButton > button[kind="primary"] {
-    font-size: 12px;
-  }
-
-  body,
-  div,
-  p,
-  span,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  label,
-  button {
-    font-size: 12px !important;
-  }
-
-  .sidebar-home-button {
-    padding: 0 5px;
-  }
-}
-
-/* 4K Screens (≥ 2560px) */
-@media (min-width: 2560px) {
-  .home-title,
-  .big-title {
-    font-size: 120px;
-  }
-
-  .sub-title {
-    font-size: 70px;
-  }
-
-  .sidebar-title {
-    font-size: 32px;
-  }
-
-  .sidebar-date {
-    font-size: 20px;
-  }
-
-  div.stButton > button[kind="primary"] {
-    font-size: 24px;
-  }
-
-  body,
-  div,
-  p,
-  span,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  label,
-  button {
-    font-size: 20px !important;
-  }
-}
-
-/* Fluid font size scaling between 375px and 1440px */
-html {
-  font-size: clamp(14px, 1.2vw, 20px);
+.stButton > button:hover {
+  background-color: #2a2a2e;
+  color: var(--valorant-light);
 }
