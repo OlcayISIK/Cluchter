@@ -5,7 +5,7 @@ def app(df, x, y):
     with open("static/style.css") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-    # NEW: CSS for buttons ONLY in the main page (not sidebar)
+    # CSS for buttons ONLY in the main page (not sidebar)
     main_page_button_css = """
     <style>
         /* Target ONLY buttons inside the main block (not sidebar) */
@@ -54,10 +54,11 @@ def app(df, x, y):
     """
     st.markdown(main_page_button_css, unsafe_allow_html=True)
 
-    if "active_button" not in st.session_state:
-        st.session_state.active_button = "5"
-    if "show_suggestion" not in st.session_state:
-        st.session_state.show_suggestion = False
+    # Initialize page-specific session state variables
+    if "maide_active_button" not in st.session_state:
+        st.session_state.maide_active_button = "5"
+    if "maide_show_suggestion" not in st.session_state:
+        st.session_state.maide_show_suggestion = False
 
     col1, col2 = st.columns([1, 5])
     with col1:
@@ -84,7 +85,7 @@ def app(df, x, y):
 
     col_left, col_center, col_right = st.columns([1, 6, 1])
     with col_center:
-        st.image("images/score_panel.png", use_container_width=True)  # New version that fills column
+        st.image("images/score_panel.png", use_container_width=True)
 
     st.markdown("<div class='sub-title'>Overall Game Stress Predictions</div>", unsafe_allow_html=True)
 
@@ -100,38 +101,37 @@ def app(df, x, y):
 
         colb1, colb2, colb3, colb4, colb5 = st.columns(5)
         if colb1.button("1.Game Stats"):
-            st.session_state.active_button = "1"
+            st.session_state.maide_active_button = "1"
             detect_and_display(x, y, presets["1"])
-            st.session_state.show_suggestion = True
+            st.session_state.maide_show_suggestion = True
         if colb2.button("2.Game Stats"):
-            st.session_state.active_button = "2"
+            st.session_state.maide_active_button = "2"
             detect_and_display(x, y, presets["2"])
-            st.session_state.show_suggestion = True
+            st.session_state.maide_show_suggestion = True
         if colb3.button("3.Game Stats"):
-            st.session_state.active_button = "3"
+            st.session_state.maide_active_button = "3"
             detect_and_display(x, y, presets["3"])
-            st.session_state.show_suggestion = True
+            st.session_state.maide_show_suggestion = True
         if colb4.button("4.Game Stats"):
-            st.session_state.active_button = "4"
+            st.session_state.maide_active_button = "4"
             detect_and_display(x, y, presets["4"])
-            st.session_state.show_suggestion = True
+            st.session_state.maide_show_suggestion = True
         if colb5.button("Current Game"):
-            st.session_state.active_button = "5"
-            st.session_state.show_suggestion = False
-            st.session_state.pop("stress_level", None)
+            st.session_state.maide_active_button = "5"
+            st.session_state.maide_show_suggestion = False
+            st.session_state.pop("maide_stress_level", None)
 
         st.markdown('</div>', unsafe_allow_html=True)
 
-
     bt_min_c = round((df["bt"].min() - 32) * 5 / 9, 1)
     bt_max_c = round((df["bt"].max() - 32) * 5 / 9, 1)
-    readonly = st.session_state.active_button != "5"
+    readonly = st.session_state.maide_active_button != "5"
 
     def slider_val(label, key, minv, maxv, default):
         return st.slider(label, minv, maxv, value=default, disabled=readonly, key=key)
 
-    if st.session_state.active_button in presets:
-        preset_vals = presets[st.session_state.active_button]
+    if st.session_state.maide_active_button in presets:
+        preset_vals = presets[st.session_state.maide_active_button]
     else:
         preset_vals = [
             int(df["gsr"].min()),
@@ -144,7 +144,7 @@ def app(df, x, y):
             float(df["hr"].min())
         ]
 
-    has_suggestion = st.session_state.get("show_suggestion", False)
+    has_suggestion = st.session_state.get("maide_show_suggestion", False)
 
     if has_suggestion:
         slider_col, separator_col, suggestion_col = st.columns([3, 0.05, 2])
@@ -178,22 +178,20 @@ def app(df, x, y):
     if has_suggestion and suggestion_col is not None:
         with suggestion_col:
             st.markdown("<h3 class='AI-label'>AI Suggestions</h3>", unsafe_allow_html=True)
-            show_suggestion(st.session_state.stress_level)
+            show_suggestion(st.session_state.get("maide_stress_level"))
 
-    if st.session_state.active_button == "5":
+    if st.session_state.maide_active_button == "5":
         if st.button("Predict User Stress Level"):
             bt = (bt_celsius * 9 / 5) + 32
             features = [gsr, rr, bt, lm, bo, rem, sh, hr]
             detect_and_display(x, y, features)
-            st.session_state.show_suggestion = True
+            st.session_state.maide_show_suggestion = True
             st.rerun()
-
 
 def detect_and_display(x, y, features):
     detection, score = detect(x, y, features)
-    st.session_state.stress_level = detection
+    st.session_state.maide_stress_level = detection
     st.info("Stress Level Calculated. Reports are being sent.")
-
 
 def show_suggestion(detection):
     if detection == 1:
