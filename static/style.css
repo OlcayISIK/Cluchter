@@ -4,6 +4,7 @@ body,
   font-family: "Rajdhani", sans-serif !important;
 }
 
+/* Typography Defaults */
 h1,
 h2,
 h3,
@@ -16,6 +17,22 @@ div {
   font-weight: 600;
 }
 
+body,
+div,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+button {
+  font-size: 18px !important;
+  font-family: "Rajdhani", sans-serif;
+}
+
 /* Centered Valorant logo */
 .sidebar-logo {
   text-align: center;
@@ -24,8 +41,8 @@ div {
 }
 
 .sidebar-logo img {
-  width: 180px; /* increased from 120px */
-  max-width: 90vw; /* more flexible for small screens */
+  width: 180px;
+  max-width: 90vw;
   border-radius: 10px;
 }
 
@@ -62,15 +79,16 @@ div {
   margin-bottom: 10px;
 }
 
+/* Home Title */
 .home-title {
-  font-size: 80px; /* Increase size */
+  font-size: 80px;
   font-weight: 900;
   text-align: center;
   margin-bottom: 20px;
   font-family: "Rajdhani", sans-serif;
 }
 
-/* Centered Home button */
+/* Sidebar Home Button */
 .sidebar-home-button {
   display: flex;
   justify-content: center;
@@ -94,10 +112,11 @@ div.stButton > button[kind="primary"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px; /* space between icon and text */
+  gap: 8px;
   width: 100%;
 }
 
+/* Large Titles */
 .big-title {
   font-size: 80px;
   font-weight: 900;
@@ -109,9 +128,10 @@ div.stButton > button[kind="primary"] {
   font-family: "Rajdhani", sans-serif;
   font-weight: 500;
   font-size: 24px;
-  color: white; /* default text color */
+  color: white;
 }
 
+/* Color-coded status messages */
 .big-title-second .optimal {
   color: #a3cde7;
   font-weight: 500;
@@ -132,6 +152,7 @@ div.stButton > button[kind="primary"] {
   font-weight: 500;
 }
 
+/* Sub-title */
 .sub-title {
   font-size: 50px;
   font-weight: 700;
@@ -140,35 +161,18 @@ div.stButton > button[kind="primary"] {
   margin-bottom: 10px;
 }
 
-/* Global font size and family */
-body,
-div,
-p,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-label,
-button {
-  font-size: 18px !important;
-  font-family: "Rajdhani", sans-serif; /* optional */
-}
-
-/* Make sidebar section headers larger */
+/* Sidebar section headers */
 .sidebar-section-header {
   font-size: 22px;
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 10px;
-  text-align: left; /* or center if you want */
+  text-align: left;
 }
 
-/* Responsive adjustments */
+/* === Responsive Adjustments === */
 
-/* Smaller screens (tablets) */
+/* Tablets (≤ 1024px) */
 @media (max-width: 1024px) {
   .sidebar-logo img {
     width: 90px;
@@ -202,7 +206,7 @@ button {
   }
 }
 
-/* Mobile devices */
+/* Mobile Devices (≤ 480px) */
 @media (max-width: 480px) {
   .sidebar-logo img {
     width: 100px;
@@ -243,4 +247,91 @@ button {
   .sidebar-home-button button {
     width: 100%;
   }
+}
+
+/* Very Small Devices (≤ 360px) */
+@media (max-width: 360px) {
+  .home-title,
+  .big-title {
+    font-size: 36px;
+  }
+
+  .sub-title {
+    font-size: 24px;
+  }
+
+  .sidebar-title {
+    font-size: 16px;
+  }
+
+  .sidebar-date {
+    font-size: 10px;
+  }
+
+  div.stButton > button[kind="primary"] {
+    font-size: 12px;
+  }
+
+  body,
+  div,
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label,
+  button {
+    font-size: 12px !important;
+  }
+
+  .sidebar-home-button {
+    padding: 0 5px;
+  }
+}
+
+/* 4K Screens (≥ 2560px) */
+@media (min-width: 2560px) {
+  .home-title,
+  .big-title {
+    font-size: 120px;
+  }
+
+  .sub-title {
+    font-size: 70px;
+  }
+
+  .sidebar-title {
+    font-size: 32px;
+  }
+
+  .sidebar-date {
+    font-size: 20px;
+  }
+
+  div.stButton > button[kind="primary"] {
+    font-size: 24px;
+  }
+
+  body,
+  div,
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label,
+  button {
+    font-size: 20px !important;
+  }
+}
+
+/* Fluid font size scaling between 375px and 1440px */
+html {
+  font-size: clamp(14px, 1.2vw, 20px);
 }
