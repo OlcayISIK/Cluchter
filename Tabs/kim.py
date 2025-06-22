@@ -90,7 +90,7 @@ def detect_and_display(x, y, features):
     detection, score = detect(x, y, features)
     st.session_state.stress_level = detection
 
-    st.info("Stres Seviyesi Hesaplandı. Raporlar Gönderiliyor.")
+    st.info("Stress Level Calculated. Reports are being sent.")
 
     if detection == 1:
         st.success("Kim Ji-Won has low stress level 🙂")
