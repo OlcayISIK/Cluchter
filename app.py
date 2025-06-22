@@ -66,7 +66,7 @@ with st.sidebar:
     home_col1, home_col2, home_col3 = st.columns([1, 4, 1])
     with home_col2:
         st.markdown('<div class="cluchter-button">', unsafe_allow_html=True)
-        if st.button("CLUCHTER", key="home_button"):
+        if st.button("CLUTCHER", key="home_button"):
             st.session_state.selected_page = "Home"
         st.markdown('</div>', unsafe_allow_html=True)
 

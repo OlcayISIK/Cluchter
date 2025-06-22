@@ -12,7 +12,7 @@ def get_base64_of_bin_file(bin_file_path):
 def app():
     st.markdown("""
     <div class="cluchter-title">
-        Cluchter
+        Clutcher
     </div>
     """, unsafe_allow_html=True)
 
@@ -80,7 +80,7 @@ def app():
         <h2>Trusted by Esports Professionals</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card">
-                <p>"Cluchter helped our team identify stress patterns during tournament play, allowing us to adjust our training regimen."</p>
+                <p>"Clutcher helped our team identify stress patterns during tournament play, allowing us to adjust our training regimen."</p>
                 <p class="author">- Pro Team Coach</p>
             </div>
             <div class="testimonial-card">
