@@ -20,8 +20,8 @@ def app(df, x, y):
     presets = {
         "1": [90, 25, 97.6, 14.5, 92.2, 90.1, 6.5, 70],
         "2": [92, 23, 97.2, 15.5, 91.2, 89.1, 7.5, 68],
-        "3": [35, 18, 97.8, 1.9, 95.1, 1.0, 8.0, 95],
-        "4": [40, 22, 100.4, 4.0, 94.8, 1.4, 5.5, 105]
+        "3": [46, 25, 96.8, 16.5, 96.2, 90.8, 6.0, 65],
+        "4": [88, 22, 100.4, 4.0, 96.8, 88.9, 6.5, 66]
         # "5" removed — handled dynamically below
     }
 
@@ -93,22 +93,22 @@ def detect_and_display(x, y, features):
     st.info("Stres Seviyesi Hesaplandı. Raporlar Gönderiliyor.")
 
     if detection == 1:
-        st.success("You Hong Joshua has low stress level")
+        st.success("Hong Joshua has low stress level")
         st.markdown("### Suggestions:")
         st.markdown("- Maintain steady focus. **Roll your shoulders back** and stay loose to stay in the zone.")
     elif detection == 2:
-        st.warning("You Hong Joshua has medium stress level")
+        st.warning("Hong Joshua has medium stress level")
         st.markdown("### Suggestions:")
         st.markdown("- Keep your cool. **Do a quick wrist rotation**, breathe evenly, and reset your mental pace.")
     elif detection == 3:
-        st.error("You Hong Joshua has high stress level!")
+        st.error("Hong Joshua has high stress level!")
         st.markdown("### Suggestions:")
         st.markdown("- Take a short pause and use the 4-7-8 breathing method. **Loosen your jaw**, take a sip of water, and get back with fresh eyes.")
     elif detection == 4:
-        st.error("You Hong Joshua has very high stress level!!")
+        st.error("Hong Joshua has very high stress level!!")
         st.markdown("### Suggestions:")
         st.markdown("- Call a hard timeout. **Close your eyes for 10 seconds**, practice box breathing, and drink some cool water before returning.")
     else:
-        st.success("You Hong Joshua is stress free and calm")
+        st.success("Hong Joshua is stress free and calm")
         st.markdown("### Suggestions:")
         st.markdown("- You're in the flow! **Maintain relaxed posture**, sip some water, and keep cruising.")

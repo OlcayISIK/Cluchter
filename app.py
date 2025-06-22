@@ -14,9 +14,9 @@ def img_to_base64(path):
 
 Tabs = {
     "Home": {"img": None, "page": home, "color": ""},
-    "Maide Sarı": {"img": "images/maide.jpeg", "page": maide, "color": "🔴"},
-    "Olcay Işık": {"img": "images/olcay.jpeg", "page": olcay, "color": "🟢"},
-    "Hong Joshua": {"img": "images/hong-joshua.png", "page": john, "color": "🟡"},
+    "Maide": {"img": "images/maide.jpeg", "page": maide, "color": "🔴"},
+    "Olcay": {"img": "images/olcay.jpeg", "page": olcay, "color": "🟢"},
+    "Joshua": {"img": "images/hong-joshua.png", "page": john, "color": "🟡"},
 }
 
 for tab in Tabs.values():
@@ -32,7 +32,7 @@ with st.sidebar:
     # Centered Home button with icon
     home_col1, home_col2, home_col3 = st.columns([1, 2, 1])
     with home_col2:
-        if st.button("Cluchter", key="home_button"):
+        if st.button("Home", key="home_button"):
             st.session_state.selected_page = "Home"
 
     # Date display
