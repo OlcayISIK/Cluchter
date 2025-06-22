@@ -22,7 +22,7 @@ def app():
     </div>
     """, unsafe_allow_html=True)
     # Add image to the home page
-    st.image("images/cluchter.jpg")
+    st.image("images/cluchter.png")
 
     # Add brief description of your web app
     st.markdown(
